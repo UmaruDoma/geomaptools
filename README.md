@@ -9,3 +9,4 @@ Another feature is the import of images into minecraft. You can define a directo
 import images into your minecraft world. The images can be in placed on the ground or standing upright.
 For clearing frames of the images i implemented a block delete function thet deletes all blocks of a clicked blocks color.
 Some quickbuild funktions are include too.
+http://minecraft-schule.de/index.php/java/geomaptools-minecraft-plugin/
