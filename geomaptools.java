@@ -14,6 +14,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockState;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -26,6 +27,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.Colorable;
+import org.bukkit.material.Wool;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
 
@@ -202,13 +204,24 @@ public class geomaptools extends JavaPlugin implements Listener{
 	 private void SetColAndMat (Material mat,DyeColor theColor, Location loc)
 	 {
 		 Block b = loc.getBlock();
-		 if (b != null) {
-			b.setType(mat);
-			Colorable col = (Colorable)b.getState().getData();
-			col.setColor(theColor);
+		 b.setType(mat);
+		 if (mat == Material.WOOL) {
+			 
+	        BlockState bs = loc.getBlock().getState();
+	        Wool wool = (Wool) bs.getData();
+	        wool.setColor(theColor);
+	        bs.update();
 		 }
 
+			
+			//Colorable col = (Colorable)b.getState().getData();
+			//col.setColor(theColor);
+			// this.getLogger().info("colmat " + mat + theColor);
+			//((Wool) b.getState().getData()).setColor(theColor);
+			
 	 }
+
+	 
 	 
 	 private void DrawBlocksDirection(Material mat,DyeColor theColor, Location loc, int ix, int iy, int iz, String  heading)
 	 {
@@ -375,8 +388,10 @@ public class geomaptools extends JavaPlugin implements Listener{
 			// Die Farbe des geclickten Blockes holen 
 			mat =  clickedblock.getType();
 			Colorable col = (Colorable)clickedblock.getState().getData();
-			DyeColor theColor = col.getColor();
+			DyeColor theColor;// = col.getColor();
 			this.getLogger().info(mat + " " + col);  
+			theColor = ((Wool) clickedblock.getState().getData()).getColor();
+			this.getLogger().info(mat + " " + theColor);  
 				 
 			// ItemMeta b = event.getItem().getItemMeta();
 			 //clickedblock.setTypeIdAndData(0, arg1, arg2)
