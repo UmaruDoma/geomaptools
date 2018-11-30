@@ -1,0 +1,46 @@
+    name: geomaptools
+    main: de.spc.mc.geomaptools
+    version: 1.100
+    commands:
+        gspur:
+            description: Mache eine Spur aus Material. [material = coal,gold,diamond,dirt,fence,glass,sand,grass,redstoneblock,glowstone,gravel,poweredrail,potato,apple]
+            usage: /<command> [material=gold]  Dicke der Spur(hoehe=1)  material = coal,gold,diamond,dirt,fence,glass,sand,grass,redstoneblock,glowstone,gravel,poweredrail,potato,apple
+            permission: geomaptools.basic
+            permission-message: You don't have <permission>
+        goff:
+            description: geoTools off for <player>
+            usage: /<command> 
+            permission: geomaptools.basic
+            permission-message: You don't have <permission>
+        gquad:
+            description: Mache 4 Bloecke. [material = coal,gold,diamond,dirt,fence,glass,sand,grass,redstoneblock,glowstone,gravel,poweredrail,potato,apple]
+            usage: /<command> [material] breite hoehe tiefe  material = coal,gold,diamond,dirt,fence,glass,sand,grass,redstoneblock,glowstone,gravel,poweredrail,potato,apple]
+            permission: geomaptools.basic
+            permission-message: You don't have <permission>
+        gforward:
+            description: Setzt eine 1 Block hohe Mauer geradeaus.
+            usage: /<command> [Material] [laenge der Mauer] [hoehe der Mauer]
+            permission: geomaptools.basic
+            permission-message: You don't have <permission>
+        gmap:
+            description: Setzt eine Karte ein.
+            usage: /<command> rechtsclick
+            permission: geomaptools.advanced
+            permission-message: You don't have <permission>
+        gload:
+            description: laedt ein bild.
+            usage: /<command> 
+            permission: geomaptools.advanced
+            permission-message: You don't have <permission>
+        gdelete:
+            description: loescht alle angrenzenden Bloecke, die dasselbe Material haben, wie der selektierte. In der Hand muss das Material auch sein.
+            usage: /<command> radius 
+            permission: geomaptools.advanced
+            permission-message: You don't have <permission>
+        gbuildalong:
+            description: baut mit dem geclickten material des geclickten blocks eine wand mit hoehe h im radius r
+            usage: /<command> radius hoehe 
+            permission: geomaptools.advanced
+            permission-message: You don't have <permission>
+   
+    
