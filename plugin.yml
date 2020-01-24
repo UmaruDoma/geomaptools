@@ -1,6 +1,8 @@
     name: geomaptools
-    main: de.spc.mc.geomaptools
-    version: 1.100
+    main: de.cndrbrbr.mc.geomaptools
+    author: cndrbrbr
+    description: because it is possible
+    version: 4.20
     commands:
         gspur:
             description: Mache eine Spur aus Material. [material = coal,gold,diamond,dirt,fence,glass,sand,grass,redstoneblock,glowstone,gravel,poweredrail,potato,apple]
@@ -18,8 +20,8 @@
             permission: geomaptools.basic
             permission-message: You don't have <permission>
         gforward:
-            description: Setzt eine 1 Block hohe Mauer geradeaus.
-            usage: /<command> [Material] [laenge der Mauer] [hoehe der Mauer]
+            description: Setzt eine <hoehe> Block hohe Mauer <laenge> geradeaus.
+            usage: /<command> [laenge der Mauer] [hoehe der Mauer]
             permission: geomaptools.basic
             permission-message: You don't have <permission>
         gmap:
@@ -37,10 +39,20 @@
             usage: /<command> radius 
             permission: geomaptools.advanced
             permission-message: You don't have <permission>
+        gOSMOverpass:
+            description: Importiert die Karte von Open Street Map
+            usage: /<command> breite und tiefe in Meter ab dem selektierten Block
+            permission: geomaptools.basic
+            permission-message: You don't have <permission>
         gbuildalong:
             description: baut mit dem geclickten material des geclickten blocks eine wand mit hoehe h im radius r
             usage: /<command> radius hoehe 
             permission: geomaptools.advanced
             permission-message: You don't have <permission>
-   
+        gspawnColorSheeps:
+            description: Spawnt bunte Schafe
+            usage: /<command> Anzahl 
+            permission: geomaptools.basic
+            permission-message: You don't have <permission>
+    
     
