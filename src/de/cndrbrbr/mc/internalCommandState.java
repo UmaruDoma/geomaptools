@@ -15,8 +15,15 @@ public class internalCommandState {
 		private String  playername = null;
 		private Material materie = null;
 		private String lastcommand = null;
+		private String colorname = null;
 		//private Map<String, Long> NumcParams = new HashMap<String,Long>();
 		
+		public String getColorname() {
+			return colorname;
+		}
+		public void setColorname(String colorname) {
+			this.colorname = colorname;
+		}
 		private int widx = 1;
 		private int heiy = 1;
 		private int depz = 1;
@@ -111,8 +118,9 @@ public class internalCommandState {
 			playername = null;
 		}
 		
-		public void CommandOn (String cmd, String[] args, String player)
+		public String CommandOn (String cmd, String[] args, String player)
 		{
+			String result = "ok";
 			lastcommand = cmd;
 			String matname = null;
 			playername = player;
@@ -165,13 +173,27 @@ public class internalCommandState {
 				  }
 				}break;	
 				
-				
+				// gspawnColorSheeps 50 red
 				case "gspawnColorSheeps":											
 				{
 				  try {
-						if ((args != null) && (args[0]!= null)) {
-							number = Integer.parseInt(args[0]);
+					  log.info("gspawnColorSheeps = " + args.toString() + " "+ args.length);
+						if ((args != null)&&(args.length>=1)){ 
+							if ((args[0]!= null)) {
+								number = Integer.parseInt(args[0]);
+								if (number > 100) {result = "Too Many Sheep"; number = 100;}
+								
+							}
+							if ((args.length>=2)&&(args[1]!= null)) {
+								colorname = args[1];
+							}
+							else colorname = "all";
+							
 						}
+						else {
+							number = 10;
+						}
+					
 
 					  }
 					  catch (Exception e) {
@@ -263,6 +285,7 @@ public class internalCommandState {
 			} 
 			
 			//NumcParams[""]
+			return result;
 			
 		}
 		public boolean IsPlayerEq (String name)

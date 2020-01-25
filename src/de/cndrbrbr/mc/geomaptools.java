@@ -37,7 +37,7 @@ import org.bukkit.util.Vector;
 
 import de.cndrbrbr.ReadOSM.*;
 
-
+// reserve :  player.getWorld().strikeLightning(clickpos);
 
 // https://yivesmirror.com/downloads/craftbukkit
 
@@ -276,9 +276,11 @@ public class geomaptools extends JavaPlugin implements Listener{
 					 return;
 				 }
 				 
+				
+				 
 				 SpawnCreatures sp = new SpawnCreatures();
 				 this.getLogger().info("gspawnColorSheeps "+istate.getNumber());
-				 sp.SpawnColorSheeps(clickpos,istate.getNumber());
+				 sp.SpawnColorSheeps(clickpos,istate.getNumber(),istate.getColorname());
 				 						
 			} 
 			
@@ -315,8 +317,9 @@ public class geomaptools extends JavaPlugin implements Listener{
 					case "gforward":
 					case "gspawnColorSheeps":
 					{
-						state.CommandOn(cmd.getName(),args,playername);
-						this.getLogger().info("Activted "+ cmd.getName() + " for " + playername);
+						String result = state.CommandOn(cmd.getName(),args,playername);
+						sender.sendMessage(result);
+						this.getLogger().info("Activted "+ cmd.getName() + " for " + playername + " " +result);
 	
 					} break;
 					

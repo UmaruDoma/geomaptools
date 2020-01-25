@@ -2,7 +2,7 @@
     main: de.cndrbrbr.mc.geomaptools
     author: cndrbrbr
     description: because it is possible
-    version: 4.20
+    version: 4.27
     commands:
         gspur:
             description: Mache eine Spur aus Material. [material = coal,gold,diamond,dirt,fence,glass,sand,grass,redstoneblock,glowstone,gravel,poweredrail,potato,apple]
@@ -50,8 +50,8 @@
             permission: geomaptools.advanced
             permission-message: You don't have <permission>
         gspawnColorSheeps:
-            description: Spawnt bunte Schafe
-            usage: /<command> Anzahl 
+            description: Spawnt bunte Schafe, wenn keine Farbean gegeben, bunte Schafe jeb_
+            usage: /<command> Anzahl Farbe (WHITE ORANGE MAGENTA LIGHT_BLUE YELLOW LIME PINK GRAY SILVER CYAN PURPLE BLUE BROWN GREEN RED BLACK)
             permission: geomaptools.basic
             permission-message: You don't have <permission>
     

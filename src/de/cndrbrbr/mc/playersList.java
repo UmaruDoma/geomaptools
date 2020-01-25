@@ -17,12 +17,13 @@ public class playersList {
 		log = alog;
 	}
 	
-	public void CommandOn (String cmd, String[] args, String player) 
+	public String CommandOn (String cmd, String[] args, String player) 
 	{
 		CommandOff (player); 
 		internalCommandState state = new internalCommandState(log);
-		state.CommandOn(cmd,args,player);
+		String result = state.CommandOn(cmd,args,player);
 		playerz.put(player, state);
+		return result;
 	}
 	
 	public internalCommandState GetState(String player)

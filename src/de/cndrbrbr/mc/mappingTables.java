@@ -42,6 +42,8 @@ public class mappingTables {
 		
 		return mat;
 	}
+	
+	
 	static public Material MatCol2Mat (String name)
 	{
 		Material mat = null;
@@ -182,6 +184,36 @@ public class mappingTables {
 		return mat;
 
 	}
+	
+	
+	
+	static public DyeColor MatchDyeColor(String string) 
+	{
+		if (string == null) return DyeColor.PINK;
+		if (string.equalsIgnoreCase("BLUE")) return DyeColor.BLUE;
+		if (string.equalsIgnoreCase("WHITE")) return DyeColor.WHITE;
+		if (string.equalsIgnoreCase("ORANGE")) return DyeColor.ORANGE;
+		if (string.equalsIgnoreCase("MAGENTA")) return DyeColor.MAGENTA;
+		if (string.equalsIgnoreCase("LIGHT_BLUE")) return DyeColor.LIGHT_BLUE;
+		if (string.equalsIgnoreCase("YELLOW")) return DyeColor.YELLOW;
+		if (string.equalsIgnoreCase("LIME")) return DyeColor.LIME;
+		if (string.equalsIgnoreCase("PINK")) return DyeColor.PINK;
+		if (string.equalsIgnoreCase("GRAY")) return DyeColor.GRAY;
+		if (string.equalsIgnoreCase("SILVER")) return DyeColor.SILVER;
+		if (string.equalsIgnoreCase("CYAN")) return DyeColor.CYAN;
+		if (string.equalsIgnoreCase("PURPLE")) return DyeColor.PURPLE;
+		if (string.equalsIgnoreCase("BROWN")) return DyeColor.BROWN;
+		if (string.equalsIgnoreCase("GREEN")) return DyeColor.GREEN;
+		if (string.equalsIgnoreCase("RED")) return DyeColor.RED;
+		if (string.equalsIgnoreCase("BLACK")) return DyeColor.BLACK;
+	
+		return DyeColor.PINK;
+
+
+	}
+	
+	//WHITE ORANGE MAGENTA LIGHT_BLUE YELLOW LIME PINK GRAY SILVER CYAN PURPLE BLUE BROWN GREEN RED BLACK
+	
 
 
 	static public DyeColor MatCol2WoolCol (String name)
