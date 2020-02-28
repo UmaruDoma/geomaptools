@@ -2,7 +2,7 @@
     main: de.cndrbrbr.mc.geomaptools
     author: cndrbrbr
     description: because it is possible
-    version: 4.27
+    version: 4.34
     commands:
         gspur:
             description: Mache eine Spur aus Material. [material = coal,gold,diamond,dirt,fence,glass,sand,grass,redstoneblock,glowstone,gravel,poweredrail,potato,apple]
@@ -34,6 +34,11 @@
             usage: /<command> 
             permission: geomaptools.advanced
             permission-message: You don't have <permission>
+        glist:
+            description: Listet alle Bilder namen.
+            usage: /<command> 
+            permission: geomaptools.advanced
+            permission-message: You don't have <permission>       
         gdelete:
             description: loescht alle angrenzenden Bloecke, die dasselbe Material haben, wie der selektierte. In der Hand muss das Material auch sein.
             usage: /<command> radius 
