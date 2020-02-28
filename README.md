@@ -1,6 +1,6 @@
 # geomaptools
-Minecraft Bukkit Plugin for Geographic-Map Import, Image Import and quick Building
-This Pluin is designed to import a geographic map image into the ground of a minecraft 
+Minecraft Bukkit Plugin for Geographic-Map Import, Image Import and quick Building.
+This Plugin is designed to import a geographic map image into the ground of a minecraft 
 map so you can see where to place a wall of a pathway. So you dont have to measure and calculate
 to build a real world place.
 Its also possible to import your own drawn fantasy map of your building or town.
