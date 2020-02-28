@@ -100,6 +100,7 @@ public class internalCommandState {
 			case "gmap":
 			case "gOSMOverpass":
 			case "gspawnColorSheeps":
+			case "glist":			
 			case "gquad": return true;
 			default: return false;
 			}

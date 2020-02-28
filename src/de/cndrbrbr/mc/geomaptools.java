@@ -5,6 +5,8 @@ package de.cndrbrbr.mc;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
@@ -50,6 +52,8 @@ public class geomaptools extends JavaPlugin implements Listener{
 
 	public void onEnable(){ 
 		
+		
+		
 		log = this.getLogger();
 		try {
 			pathtomaps = getConfig().getString("geo.path");
@@ -63,7 +67,7 @@ public class geomaptools extends JavaPlugin implements Listener{
 		
 		state = new playersList(log);
 		gm = new mcbuildgraph(log);
-		log.info("spc geotools have been enabled.");
+		log.info("cndrbrbr geotools have been enabled.");
 		getServer().getPluginManager().registerEvents(this, this);
 	}
 	
@@ -83,79 +87,13 @@ public class geomaptools extends JavaPlugin implements Listener{
 				+" "+  b.getLocation().getBlockZ()
 				+" "+  b.getLocation().getBlockY());
 	 }
-
-/*	 @EventHandler
-	 public void onBlockPlace(BlockPlaceEvent event) {
-		 Player p = event.getPlayer();
-		 Block b= event.getBlock();
-		 Material mat = b.getType();
-
-		  Bukkit.broadcastMessage("Block place! "+p.getName()+" "+mat.name()
-	  		+" "+ b.getLocation().getWorld().getName()
-			+" "+  b.getLocation().getBlockX()
-			+" "+  b.getLocation().getBlockZ()
-			+" "+  b.getLocation().getBlockY());
-
-	 }
-	 */
-
-	 
-	 @EventHandler
-	 public void onPlayerMove(PlayerMoveEvent event) {
-		 String playername = event.getPlayer().getName();
- 		 Location to = event.getTo();
-		 Location from = event.getFrom();
-		 internalCommandState istate = state.GetState(playername);
-	//	  blockinHand = event.getPlayer().getItemInHand().getData().getItemType();
-		 
-			
-		 if (state.IsCommandActive(playername,"gspur")) 
-		 {
-			 Material mat;
-			 DyeColor theColor = null;
-			 ItemStack items = event.getPlayer().getInventory().getItemInMainHand();
-			 
-			 if (items != null) {	 
-				 mat = items.getType();			 
-				 if (mat == Material.WOOL) {
-					 theColor= ((Wool)items.getData()).getColor();
-				 }
-			 }
-			 else {
-				 mat = state.GetMaterial(playername);
-			 }
-
-			 double num1 = event.getFrom().getY();
-			 
-			 if (state.IsMaterielRedstone(playername)) 
-			 {
-				 from.setY(from.getY() -2);
-				 from.getBlock().setType(Material.REDSTONE_BLOCK);
-				 from.setY(num1-1);
-				 from.getBlock().setType(Material.POWERED_RAIL);
-				 
-			 }
-			 else {
-				 from.setY(from.getY() -1);
-				 gm.SetColAndMat ( mat, theColor, from);
-				 
-			 }
-		 }
-		 if (istate != null) {
-			 istate.setLastx(from.getBlockX());
-			 istate.setLasty(from.getBlockY());
-			 istate.setLastz(from.getBlockZ());
-			 
-		 }
-	 }
 	 
 	 
-	 
-	
 	 
 	 @EventHandler
 	 public void onBlockPlaceEvent (BlockPlaceEvent event) {
 		 
+		 this.getLogger().info("onBlockPlaceEvent !!!");	
 		 this.getLogger().info(".");
 		 Player player = event.getPlayer(); if (player == null) return;
 		 String playername = player.getName(); if (playername == null) return;
@@ -177,7 +115,8 @@ public class geomaptools extends JavaPlugin implements Listener{
 //			(action.equals(Action.RIGHT_CLICK_BLOCK))))
 		 {
 			
-			 
+			this.getLogger().info("onBlockPlaceEvent !!!");	
+			
 			// Die Farbe des geclickten Blockes holen 
 			mat =  clickedblock.getType();
 			DyeColor theColor;// = col.getColor();
@@ -291,6 +230,77 @@ public class geomaptools extends JavaPlugin implements Listener{
 		 
 	 }
 
+/*	 @EventHandler
+	 public void onBlockPlace(BlockPlaceEvent event) {
+		 Player p = event.getPlayer();
+		 Block b= event.getBlock();
+		 Material mat = b.getType();
+
+		  Bukkit.broadcastMessage("Block place! "+p.getName()+" "+mat.name()
+	  		+" "+ b.getLocation().getWorld().getName()
+			+" "+  b.getLocation().getBlockX()
+			+" "+  b.getLocation().getBlockZ()
+			+" "+  b.getLocation().getBlockY());
+
+	 }
+*/
+
+	 
+	 @EventHandler
+	 public void onPlayerMove(PlayerMoveEvent event) {
+		 String playername = event.getPlayer().getName();
+ 		 Location to = event.getTo();
+		 Location from = event.getFrom();
+		 internalCommandState istate = state.GetState(playername);
+	//	  blockinHand = event.getPlayer().getItemInHand().getData().getItemType();
+		 
+			
+		 if (state.IsCommandActive(playername,"gspur")) 
+		 {
+			 Material mat;
+			 DyeColor theColor = null;
+			 ItemStack items = event.getPlayer().getInventory().getItemInMainHand();
+			 
+			 if (items != null) {	 
+				 mat = items.getType();			 
+				 if (mat == Material.WOOL) {
+					 theColor= ((Wool)items.getData()).getColor();
+				 }
+			 }
+			 else {
+				 mat = state.GetMaterial(playername);
+			 }
+
+			 double num1 = event.getFrom().getY();
+			 
+			 if (state.IsMaterielRedstone(playername)) 
+			 {
+				 from.setY(from.getY() -2);
+				 from.getBlock().setType(Material.REDSTONE_BLOCK);
+				 from.setY(num1-1);
+				 from.getBlock().setType(Material.POWERED_RAIL);
+				 
+			 }
+			 else {
+				 from.setY(from.getY() -1);
+				 gm.SetColAndMat ( mat, theColor, from);
+				 
+			 }
+		 }
+		 if (istate != null) {
+			 istate.setLastx(from.getBlockX());
+			 istate.setLasty(from.getBlockY());
+			 istate.setLastz(from.getBlockZ());
+			 
+		 }
+	 }
+	 
+	 
+	 
+	
+	 
+	
+
 	
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args){
@@ -300,12 +310,20 @@ public class geomaptools extends JavaPlugin implements Listener{
 
 			if (sender instanceof Player) {
 				String playername = sender.getName();
+				Player player = (Player)sender;
 				
 				String cmdname = cmd.getName();
 				switch (cmdname)  {
 					case "goff":				
 					{
 						state.CommandOff(playername);
+						
+					} break;
+					case "glist":				
+					{
+						String names = GetPicFilenames();
+						this.getLogger().info(names);
+						player.sendMessage(ChatColor.AQUA + names);
 						
 					} break;
 									
@@ -367,6 +385,41 @@ public class geomaptools extends JavaPlugin implements Listener{
 		return false; 
 
 	}
+
+	private String GetPicFilenames() {
+		
+
+        final File folder = new File(pathtomaps);
+       
+        StringBuilder sb = new StringBuilder();
+        sb.append("Pictures> ");
+        
+        List<String> result = new ArrayList<>();
+
+        search(".*\\.PNG", folder, result);
+
+        for (String s : result) {
+        	sb.append(s);
+        }     
+		
+		return sb.toString();
+	}
+	private  static void search(final String pattern, final File folder, List<String> result) {
+        for (final File f : folder.listFiles()) {
+
+            if (f.isDirectory()) {
+                search(pattern, f, result);
+            }
+
+            if (f.isFile()) {
+                if (f.getName().matches(pattern)) {
+                	result.add(",");
+                    result.add(f.getName());
+                }
+            }
+
+        }
+    }
 
 
 
